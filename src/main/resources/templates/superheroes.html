@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Hero name</th>
+            <th>Real name</th>
+            <th>Good</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hero, status : ${superheroes}">
+            <td th:text="${status.count}"/>
+            <td th:text="${hero.name}"/>
+            <td th:text="${hero.firstName + ' ' + hero.lastName}"/>
+            <td>
+                <span class="glyphicon glyphicon-ok" th:if="${hero.good}"></span>
+                <span class="glyphicon glyphicon-remove" th:unless="${hero.good}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
