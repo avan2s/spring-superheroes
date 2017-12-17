@@ -9,5 +9,22 @@ spring:
     url: jdbc:mysql://localhost:3306/spring_superheroes
     username: root
     password: root
+    platform: mysql
+    initialize: false
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: none
+---
+
+spring:
+  profiles: container
+  datasource:
+    url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    initialize: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+

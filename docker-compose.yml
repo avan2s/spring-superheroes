@@ -1,0 +1,23 @@
+version: '2.1'
+
+services:
+  demo-mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=spring_superheroes
+      - MYSQL_USER=avh
+      - MYSQL_PASSWORD=root_avh
+  spring-boot-jpa-docker-webapp:
+    image: erdbeerheld1990/spring-superheroes:0.0.1-SNAPSHOT
+    depends_on:
+      - demo-mysql
+    ports:
+      - 8080:9000
+    environment:
+    # environment variables required for application.yml container profile
+      - DATABASE_HOST=demo-mysql
+      - DATABASE_USER=avh
+      - DATABASE_PASSWORD=root_avh
+      - DATABASE_NAME=spring_superheroes
+      - DATABASE_PORT=3306
