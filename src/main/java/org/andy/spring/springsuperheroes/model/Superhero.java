@@ -1,22 +1,36 @@
 package org.andy.spring.springsuperheroes.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "superhero")
 public class Superhero {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "good")
     private boolean good;
 
-    public Superhero(String firstName, String lastName, String name, boolean good) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.name = name;
-        this.good = good;
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -24,6 +38,7 @@ public class Superhero {
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -31,6 +46,7 @@ public class Superhero {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -38,6 +54,7 @@ public class Superhero {
     public boolean isGood() {
         return good;
     }
+
     public void setGood(boolean good) {
         this.good = good;
     }
